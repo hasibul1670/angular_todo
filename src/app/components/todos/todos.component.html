@@ -1,1 +1,93 @@
-<p>todos works!</p>
+<div class="row">
+  <div class="col-md-4 mt-5">
+    <div class="card border-0 shadow p-3">
+      <div class="form-floating mb-3 tetx-center">
+        <h5 class="text-center text-primary">Add Task</h5>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          [(ngModel)]="title"
+        />
+        <label for="title">Title</label>
+      </div>
+      <div class="form-floating mb-3">
+        <textarea
+          type="text"
+          class="form-control"
+          id="description"
+          name="description"
+          [(ngModel)]="description"
+        >
+        </textarea>
+        <label for="description">description</label>
+      </div>
+      <div class="mb-3 form-floating">
+        <select
+          class="form-select"
+          id="todoPriority"
+          [(ngModel)]="todoPriority"
+          name="priority"
+        >
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+        <label for="title">Priority</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="date"
+          class="form-control"
+          id="date"
+          name="date"
+          [(ngModel)]="date"
+        />
+        <label for="date">Date</label>
+      </div>
+
+      <button type="button" class="btn btn-primary" (click)="addTask()">
+        Add Task
+      </button>
+    </div>
+  </div>
+  <div class="col-md-8 mt-2">
+    <h5 class="text-danger fw-bold">Todo List</h5>
+    <div class="card p-3 shadow">
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">Priority Level</th>
+              <th scope="col">Due Date</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let task of taskList">
+              <td>{{ task.id }}</td>
+              <td>{{ task.title }}</td>
+              <td>{{ task.description }}</td>
+              <td>{{ task.todoPriority }}</td>
+              <td>{{ task.date }}</td>
+              <td>
+                <button
+                  class="btn btn-outline-danger"
+                  (click)="deleteTask(task)"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
